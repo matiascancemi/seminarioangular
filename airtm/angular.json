@@ -123,6 +123,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "airtm"
+    }
+  },
+  "defaultProject": "airtm",
+  "cli": {
+    "analytics": "8390c36d-5486-4107-aa7e-1ff13e3e1fd8"
+  }
 }
