@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { CarroService } from '../carro.service';
 import { Transacciones } from './transacciones';
 
 @Component({
@@ -8,30 +9,35 @@ import { Transacciones } from './transacciones';
 })
 export class AtmTransaccionesComponent implements OnInit {
 
-  constructor() { }
+  constructor(private carro: CarroService) {
+
+  }
 
   transacciones: Transacciones[] =  [
     {
     fecha: new Date(1390272893353),
-    billetera: "Paypal",
-    dinero_a_enviar: 10,
-    dinero_a_recibir: 17,
-    tipo_de_cambio: 1.17,
-    ganancia: 5,
+    moneda: "Dolar",
+    valor: 10,
+    cantidad: 0,
     imagen: "assets/img/paypal.png",
+    activo: true
   },
   {
     fecha: new Date(1390272893353),
-    billetera: "Payoneer",
-    dinero_a_enviar: 15,
-    dinero_a_recibir: 19,
-    tipo_de_cambio: 1.05,
-    ganancia: 2,
+    moneda: "Euro",
+    valor: 15,
+    cantidad: 0,
     imagen: "assets/img/paypal.png",
+    activo: true
   },
 ];
 
+agregarCompra(transaccion): void{
+  this.carro.agregarCompra(transaccion);
+}
+
   ngOnInit(): void {
   }
+
 
 }

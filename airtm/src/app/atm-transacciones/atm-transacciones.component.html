@@ -1,15 +1,17 @@
-<div class="container">
-    <div class="row">
-        <div class="col-sm" *ngFor="let transaccion of transacciones">
-            <ul>
-                <img [src]="transaccion.imagen" [alt]="transaccion.billetera">
-                <li>Fecha: {{transaccion.fecha | date:'shortDate'}}</li>
-                <li>Billetera: {{transaccion.billetera}}</li>
-                <li>Dinero a Enviar: {{transaccion.dinero_a_enviar}}</li>
-                <li>Dinero a Recibir: {{transaccion.dinero_a_recibir}}</li>
-                <li>Tipo de Cambio: {{transaccion.tipo_de_cambio}}</li>
-                <li *ngIf="transaccion.ganancia>0" [ngClass]="{'ganancia': transaccion.ganancia>4}">Ganancia: {{transaccion.ganancia}}</li>
-            </ul>
+<div class="row">
+   <div class="col-4" *ngFor="let transaccion of transacciones">
+                    <ul>
+                        <img [src]="transaccion.imagen" [alt]="transaccion.moneda">
+                        <li>Fecha: {{transaccion.fecha | date:'shortDate'}}</li>
+                        <li>Moneda: {{transaccion.moneda}}</li>
+                        <li>Valor: {{transaccion.valor}}</li>
+                        <li>
+                            <app-input-cantidad [(cantidad)]="transaccion.cantidad" [valor]="transaccion.valor" *ngIf="transaccion.activo"></app-input-cantidad>
+                        </li>
+                        <button class="btn" (click)="agregarCompra(transaccion)">Comprar</button>
+                    </ul>
+                </div>
+        <div class="col-4">
+            <app-carro></app-carro>
         </div>
-    </div>
-</div>
+        </div>
